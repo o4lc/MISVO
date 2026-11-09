@@ -1,0 +1,40 @@
+# Gemma3-4B-IT on SHP, scored by Skywork-Reward-V2-Qwen3-0.6B.
+# Paper setting: K = N = 16 (rollouts per step x steps); BoN budget N = K*N = 256.
+model:
+  name: gemma3_4b_it
+  id: google/gemma-3-4b-it
+
+reward_model:
+  id: Skywork/Skywork-Reward-V2-Qwen3-0.6B
+
+dataset:
+  name: shp
+
+generation:
+  max_new_tokens: 512
+  attn_implementation: sdpa
+
+reward_norm:
+  mode: batch
+  momentum: 0.1
+
+aisp:
+  sigma_sq: 0.5
+  lambda: 0.1
+  alpha: 0.9999
+  n: 16
+  kappa: 16
+
+bon:
+  N: 256
+  temperature: 0.7
+  top_p: 0.95
+
+misvo:
+  n_samples: 16
+  n_steps: 16
+  lr: 0.1
+  lambda: 1.0
+  temperature: 0.7
+  top_p: 0.95
+  regularizer: frozen_fisher

@@ -1,0 +1,20 @@
+# Versions used for the equivalence tests of this release (Python 3.10, CUDA 13).
+torch==2.11.0
+transformers==5.5.0
+datasets==4.8.4
+accelerate==1.13.0
+huggingface_hub==1.9.0
+tokenizers==0.22.2
+safetensors==0.7.0
+sentencepiece==0.2.1
+protobuf==7.34.1
+numpy==2.2.6
+scipy==1.15.3
+PyYAML==6.0.3
+tqdm==4.67.3
+nltk==3.9.4
+matplotlib==3.10.9
+
+# Coherence metric (SimCSE). `simcse` pins very old dependencies, so install it
+# without them:  pip install scikit-learn==1.7.2 && pip install --no-deps simcse==0.4
+scikit-learn==1.7.2

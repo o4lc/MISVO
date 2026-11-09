@@ -1,0 +1,39 @@
+# Phi-4 (14B) on SHP, scored by Skywork-Reward-V2-Qwen3-0.6B.
+# Paper setting: K = N = 32 (rollouts per step x steps); BoN budget N = K*N = 1024.
+model:
+  name: phi4
+  id: microsoft/phi-4
+
+reward_model:
+  id: Skywork/Skywork-Reward-V2-Qwen3-0.6B
+
+dataset:
+  name: shp
+
+generation:
+  max_new_tokens: 512
+
+reward_norm:
+  mode: batch
+  momentum: 0.1
+
+aisp:
+  sigma_sq: 0.5
+  lambda: 0.1
+  alpha: 0.9999
+  n: 32
+  kappa: 32
+
+bon:
+  N: 1024
+  temperature: 0.7
+  top_p: 0.95
+
+misvo:
+  n_samples: 32
+  n_steps: 32
+  lr: 0.1
+  lambda: 3.0
+  temperature: 0.7
+  top_p: 0.95
+  regularizer: frozen_fisher
